@@ -3,9 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "GameFramework/PlayerController.h"
-#include "Runtime/Engine/Classes/Engine/World.h"
 #include "TankPlayerController.generated.h"
 
 //Forward Declaration

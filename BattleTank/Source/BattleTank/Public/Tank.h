@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
-#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"

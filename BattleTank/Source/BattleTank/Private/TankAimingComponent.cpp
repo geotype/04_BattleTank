@@ -2,6 +2,9 @@
 
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
+#include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 
 
@@ -63,7 +66,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		FString TankName = GetOwner()->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *TankName, *AimDirection.ToString());
-		//MoveBarrel(AimDirection);
+		MoveBarrel(AimDirection);
 	}
 	else
 	{
@@ -80,7 +83,7 @@ void UTankAimingComponent::MoveBarrel(FVector AimDirection)
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator %s"), *DeltaRotator.ToString());
 
-	Barrel->ElevateBarrel(5);
+	Barrel->ElevateBarrel(DeltaRotator.Pitch);
 }
 
 

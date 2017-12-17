@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
+#include "Runtime/Engine/Classes/Components/StaticMeshComponent.h"
 #include "TankAimingComponent.h"
 #include "Runtime/CoreUObject/Public/UObject/UObjectGlobals.h"
 
