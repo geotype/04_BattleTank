@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
@@ -31,7 +32,12 @@ void ATankPlayerController::AimTowardsCrosshair()
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("Hit: %s"), *HitLocation.ToString());
 		GetControlledTank()->AimAt(HitLocation);
-	}	
+	}
+	else //TODO Move hit error cheking in ATank class
+	{	
+		auto ControlledTank = GetControlledTank()->GetName();
+		UE_LOG(LogTemp, Warning, TEXT("%s has no hit location"),*ControlledTank);
+	}
 }
 
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
@@ -45,8 +51,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	
 	if(DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocation, WorldDirection))
 	{
-		GetLookVectorHitLocation(CameraWorldLocation, WorldDirection, HitLocation);
-		return true;
+		return GetLookVectorHitLocation(CameraWorldLocation, WorldDirection, HitLocation);
 	}
 	
 	HitLocation = FVector(0);
@@ -69,7 +74,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector CameraWorldLocation
 		return true;
 	}
 
-	HitLocation = FVector(0);
+	//HitLocation = FVector(0);
 	return false;
 }
 
