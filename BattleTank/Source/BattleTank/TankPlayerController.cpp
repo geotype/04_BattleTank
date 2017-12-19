@@ -38,7 +38,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	else //TODO Move hit error cheking in ATank class
 	{	
 		auto ControlledTank = GetControlledTank()->GetName();
-		UE_LOG(LogTemp, Warning, TEXT("%s has no hit location"),*ControlledTank);
+		//UE_LOG(LogTemp, Warning, TEXT("%s has no hit location"),*ControlledTank);
 	}
 }
 
